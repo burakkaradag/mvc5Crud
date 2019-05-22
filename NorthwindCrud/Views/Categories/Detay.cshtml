@@ -1,0 +1,36 @@
+﻿@model NorthwindCrud.Models.View.CategoriesModel
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Detay</h2>
+<div class="col-md-5">
+    <div class="form-group">
+        <div class="form-control">
+            @Html.DisplayNameFor(x => x.categories.CategoryID)
+            @Html.DisplayFor(x => x.categories.CategoryID)
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="form-control">
+            @Html.DisplayNameFor(x => x.categories.CategoryName)
+            @Html.DisplayFor(x => x.categories.CategoryName)
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="form-control">
+            @Html.DisplayNameFor(x => x.categories.Description)
+            @Html.DisplayFor(x => x.categories.Description)
+        </div>
+
+    </div>
+</div>
+<form method="post" action="/Categories/Liste">
+    <div>
+        <input type="submit" value="listeye dön"  />
+    </div>
+</form>

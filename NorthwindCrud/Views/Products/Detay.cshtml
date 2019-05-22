@@ -1,0 +1,32 @@
+﻿@model NorthwindCrud.Models.View.ProductsModel
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Detay</h2>
+<form>
+    <div class="form-group">
+        <label class="form-control">Product Name</label>
+        <label class="form-control">@Model.Products.ProductName</label>
+    </div>
+    <div class="form-group">
+        <label class="form-control">Unit Price</label>
+        <label class="form-control">@Model.Products.UnitPrice</label>
+    </div>
+    <div class="form-group">
+        <label class="form-control">Unit In Stock</label>
+        <label class="form-control">@Model.Products.UnitsInStock</label>
+    </div>
+    <div class="form-group">
+        <label class="form-control">Quantity</label>
+        <label class="form-control">@Model.Products.QuantityPerUnit</label>
+    </div>
+    <div class="form-group">
+        <label class="form-control">Discountinued</label>
+        <label class="form-control">@Model.Products.Discontinued</label>
+    </div>
+    <input type="submit" value="ok" formaction="/Products/Liste"/>
+
+</form>
+

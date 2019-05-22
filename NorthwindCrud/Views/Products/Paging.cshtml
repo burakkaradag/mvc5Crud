@@ -1,0 +1,64 @@
+﻿@model NorthwindCrud.Models.View.ProductsModel
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Products</h2>
+<form>
+    @Html.LabelFor(x=>x.GirilenSayfaNo)
+    @Html.EditorFor(x => x.GirilenSayfaNo)
+    <button type="submit" formaction="/Products/Paging/1">gönder</button>
+</form>
+<form method="get" action="/Products/Ekle">
+    <button class="btn btn-primary" >ekle</button>
+    
+
+</form>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>product ıd</th>
+            <th>product name</th>
+            <th>category name</th>
+            <th>company name</th>
+            <th>unit price</th>
+            <th>QuantitPerUnit</th>
+            <th>Discontinued</th>
+            <th>Detay</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.plist)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryName</td>
+                <td>@item.CompanyName</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.QuanittyPer</td>
+                <td>@item.Discontined</td>
+                <td><a href="/Products/Detay/@item.ProductId"><i class="fas fa-search"></i></a></td>
+                <td><a href="/Products/Guncel/@item.ProductId"><i class="fas fa-pen"></i></a></td>
+                <td><a href="/Products/Sil/@item.ProductId"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        @for (int i = 1; i <= Model.ToplamSayfa; i++)
+        {
+            <li class="page-item"><a class="page-link" href="/Products/Paging/@i">@i</a></li>
+        }
+
+
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+</nav>
+

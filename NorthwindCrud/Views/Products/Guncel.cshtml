@@ -1,0 +1,78 @@
+﻿@model NorthwindCrud.Models.View.ProductsModel
+
+@{
+    ViewBag.Title = "Guncel";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Guncel</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Products</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.HiddenFor(x => x.Products.ProductID)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Products.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Products.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Products.ProductName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Products.Suppliers.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.DropDownListFor(x => x.Products.SupplierID, Model.SupplierDropdown, htmlAttributes:new { @class = "control-label col-md-10" })
+
+       
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Products.Categories.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.DropDownListFor(x => x.Products.CategoryID, Model.CategoriesDropdown, htmlAttributes: new { @class = "control-label col-md-10" })
+
+      
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Products.QuantityPerUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Products.QuantityPerUnit, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Products.QuantityPerUnit, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Products.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Products.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Products.UnitPrice, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Products.Discontinued, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Products.Discontinued)
+                @Html.ValidationMessageFor(model => model.Products.Discontinued, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+    <div>
+        <a class="btn btn-dark" href="/Products/Liste">İptal</a>
+        @*@Html.ActionLink("Back to List", "Index")*@
+    </div>
